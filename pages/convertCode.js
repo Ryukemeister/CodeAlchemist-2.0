@@ -1,68 +1,96 @@
+import { useStore } from "@/store";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
+import Editor from "@/components/Editor";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "800"] });
 
 function ConvertCode() {
-  const [inputValue, setInputValue] = useState("");
-  const [content, setContent] = useState("");
-
-  function onChange(e) {
-    e.preventDefault();
-    setInputValue(e.currentTarget.value);
-  }
+  const codeToBeConverted = useStore((store) => store.codeToBeConverted);
+  const convertedCode = useStore((state) => state.convertedCode);
+  const setCodeToBeConverted = useStore((store) => store.setCodeToBeConverted);
+  const setConvertedCode = useStore((state) => state.setConvertedCode);
+  const allAvailableLanguages = [
+    "javascript",
+    "typeScript",
+    "python",
+    "java",
+    "c",
+    "c++",
+    "sql",
+    "swift",
+    "ruby",
+    "go",
+    "flutter",
+    "dart",
+  ];
 
   async function onSubmitButton(e) {
     e.preventDefault();
-    console.log("Button clicked");
-    const response = await fetch(`/api/convertCode/${inputValue}`);
+    setConvertedCode("");
+
+    // Obtaining values of the current language options and
+    // the language to be converted
+    const currentLang = document.getElementById("current-language").value;
+    const langToConvert = document.getElementById(
+      "language-to-be-converted"
+    ).value;
+
+    const response = await fetch(
+      `/api/convertCode/${currentLang}=+x=${langToConvert}=+x=${codeToBeConverted}`
+    );
     const data = await response.json();
     const { filteredReponse } = data;
 
-    console.log(data);
-    console.log(filteredReponse.content);
-    console.log(typeof filteredReponse.content);
-    setContent(filteredReponse.content);
+    setConvertedCode(filteredReponse.content);
   }
 
   return (
     <main>
       <Navbar />
-      <div>
-        <h1
-          className={`${inter.className} text-red-500 m-5 text-4xl font-bold`}
-        >
-          This is where all the code conversion happens!
-        </h1>
+      <h1
+        className={`${poppins.className} text-3xl font-semibold px-5 md:px-10 pt-5 md:py-5`}
+      >
+        Welcome to{" "}
+        <span className="bg-gradient-to-r from-[#8A2387] via-[#E94057] to-[#F27121] text-transparent bg-clip-text">
+          {" "}
+          Conversion Land
+        </span>
+        , this is where you convert your code.
+      </h1>
+      <div className="overflow-hidden flex flex-col md:flex-row mx-5 gap-x-14 gap-y-10 md:ml-10 mt-5">
+        <Editor
+          code={codeToBeConverted}
+          handleChange={setCodeToBeConverted}
+          width="560"
+          height="320"
+          marginLeft="0"
+          marginTop="0"
+          isEditable="true"
+          selectedLanguageBoxColor="green"
+          availableLanguages={allAvailableLanguages}
+          id="current-language"
+        />
+        <Editor
+          width="560"
+          height="320"
+          marginTop="0"
+          marginLeft="0"
+          selectedLanguageBoxColor="yellow"
+          isEditable="true"
+          id="language-to-be-converted"
+          availableLanguages={allAvailableLanguages}
+          code={convertedCode}
+          handleChange={setConvertedCode}
+        />
       </div>
-      <div className="my-5 mx-10">
-        <h1
-          className={`${inter.className} bg-white text-3xl text-red-400 font-bold`}
-        >
-          Hello world, this is{" "}
-          <span
-            className={`${poppins.className} pl-5 md:pl-0 bg-gradient-to-r from-[#8A2387] via-[#E94057] to-[#F27121] text-transparent bg-clip-text font-bold text-[28px]`}
-          >
-            CodeAlchemist
-          </span>
-        </h1>
-        <input
-          value={inputValue}
-          onChange={onChange}
-          className="bg-pink-400 m-5 rounded-full text-white px-3 py-1"
-        ></input>
-        <button
-          onClick={onSubmitButton}
-          className={`${inter.className} bg-green-400 rounded-md px-3 py-1 text-white font-bold`}
-        >
-          Click me
-        </button>
-        <h1 className={`${inter.className} font-medium text-2xl text-red-500`}>
-          {content}
-        </h1>
-      </div>
+      <button
+        className={`${poppins.className} bg-red-500 opacity-90 text-white font-poppins font-semibold text-xl px-3 py-1 rounded-md tracking-wide ml-5 md:ml-10 mb-5 mt-5`}
+        onClick={onSubmitButton}
+      >
+        Submit
+      </button>
     </main>
   );
 }
