@@ -14,7 +14,21 @@ function Editor({
   marginTop,
   marginLeft,
   isEditable,
+  availableLanguages = [],
 }) {
+  // console.log(availableLanguages, typeof availableLanguages);
+  // console.table(availableLanguages, typeof availableLanguages);
+
+  // take in a prop availableLanguages to collect values of all the availabe language options
+  // map through it and return an option for each element in the array
+  const allOptionValues = availableLanguages.map((language) => {
+    return (
+      <option key={language} value={language}>
+        {language[0].toLocaleUpperCase() + language.slice(1)}
+      </option>
+    );
+  });
+
   return (
     <div
       className={`flex flex-col mr-0 overflow-hidden md:w-[${width}px] mt-${marginTop} ml-${marginLeft}`}
@@ -33,11 +47,7 @@ function Editor({
             className={`outline-none text-sm md:text-base text-white font-poppins font-semibold tracking-wide h-[25px] md:h-[30px] px-2 bg-${selectedLanguageBoxColor}-500 rounded-tr-md`}
             id={`${id}`}
           >
-            <option value="JavaScript">JavaScript</option>
-            <option value="TypeScript">TypeScript</option>
-            <option value="Python">Python</option>
-            <option value="C">C</option>
-            <option value="C++">C++</option>
+            {allOptionValues}
           </select>
         </div>
       </div>
