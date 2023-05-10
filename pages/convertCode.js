@@ -37,6 +37,11 @@ function ConvertCode() {
       "language-to-be-converted"
     ).value;
 
+    console.log(
+      `Current language is: ${currentLang} while lnaguage to be converted is ${langToConvert}`
+    );
+    console.log(`Actual code : ${codeToBeConverted}`);
+
     const response = await fetch(
       `/api/convertCode/${currentLang}=+x=${langToConvert}=+x=${codeToBeConverted}`
     );
