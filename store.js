@@ -7,6 +7,7 @@ const store = (set) => ({
   codeToBeConverted: "",
   codeToBeExplained: "",
   convertedCode: "",
+  codeReadyToBeExplained: [],
 
   // onchange handlers for the above code values
   setCodeToBeConverted: (newValue) => {
@@ -21,6 +22,10 @@ const store = (set) => ({
   setConvertedCode: (newValue) =>
     set(() => ({
       convertedCode: newValue,
+    })),
+  setCodeReadyToBeExplained: (newValue) =>
+    set(() => ({
+      codeReadyToBeExplained: newValue,
     })),
 });
 
