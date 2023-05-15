@@ -46,8 +46,8 @@ function ConvertCode() {
       .trimStart()
       .trimEnd();
 
-    // console.log(filteredReponse);
-    // console.log(actualConvertedCodeSnippet);
+    console.log(filteredReponse);
+    console.log(actualConvertedCodeSnippet);
 
     setConvertedCode(actualConvertedCodeSnippet);
   }
