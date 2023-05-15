@@ -44,7 +44,7 @@ export default async function handler(req, res) {
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Translate this function from ${currentLanguage} into ${languageToConvert}: ${actualCode}`,
+      prompt: `Read the following code: ${actualCode} and convert the given code from ${currentLanguage} to ${languageToConvert}.`,
       temperature: 0,
       max_tokens: 150,
     });
