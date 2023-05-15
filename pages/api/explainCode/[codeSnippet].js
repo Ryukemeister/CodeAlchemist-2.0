@@ -18,9 +18,7 @@ export default async function handler(req, res) {
     max_tokens: 150,
   });
 
-  //console.log(response);
   const filteredResponse = response.data;
-  console.log(response.data);
 
   res.status(200).json({ filteredResponse });
 }
