@@ -60,9 +60,11 @@ export default async function handler(req, res) {
       stop: ["###"],
     });
 
+    // `Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`
     let responseFromBard = await bot.ask(
-      `Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`
+      `Convert this code from ${currentLanguage} to ${languageToConvert}: ${actualCode}`
     );
+    // convert this code from python to java
 
     // const filteredReponse = response.data.choices[0].message;
     const filteredReponse = response.data;
