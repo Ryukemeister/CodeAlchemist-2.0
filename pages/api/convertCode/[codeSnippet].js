@@ -1,4 +1,11 @@
 import { Configuration, OpenAIApi } from "openai";
+import { Bard } from "googlebard";
+
+// Secret cookie for using the bard chatbot
+let barAuthCookie = process.env.BARD_AUTH_COOKIE;
+
+// setring up bard config
+let bot = new Bard(barAuthCookie);
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
@@ -53,9 +60,13 @@ export default async function handler(req, res) {
       stop: ["###"],
     });
 
+    let responseFromBard = await bot.ask(
+      `Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`
+    );
+
     // const filteredReponse = response.data.choices[0].message;
     const filteredReponse = response.data;
 
-    res.status(200).json({ filteredReponse });
+    res.status(200).json({ filteredReponse, responseFromBard });
   }
 }
