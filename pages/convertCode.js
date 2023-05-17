@@ -41,13 +41,15 @@ function ConvertCode() {
       `/api/convertCode/${currentLang}=+x=${langToConvert}=+x=${codeToBeConverted}`
     );
     const data = await response.json();
-    const { filteredReponse } = data;
+    const { filteredReponse, responseFromBard } = data;
     const actualConvertedCodeSnippet = filteredReponse.choices[0].text
       .trimStart()
       .trimEnd();
 
     console.log(filteredReponse);
     console.log(actualConvertedCodeSnippet);
+
+    console.log(responseFromBard);
 
     setConvertedCode(actualConvertedCodeSnippet);
   }
