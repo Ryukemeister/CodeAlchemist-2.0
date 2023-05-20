@@ -72,7 +72,7 @@ export default async function handler(req, res) {
     // }:\n ${actualCode}`
 
     let responseFromBard = await bot.ask(`
-    Convert this code from ${currentLanguage} to ${languageToConvert}: \n ${actualCode}`);
+    Translate the following ${currentLanguage} code to ${languageToConvert}: \n\n${actualCode}`);
 
     // let responseFromBard = await bot.ask(`How are you bard?`);
 
