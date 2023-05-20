@@ -44,8 +44,6 @@ function ConvertCode() {
     const {
       // filteredReponse,
       responseFromBard,
-      currentLanguage,
-      languageToConvert,
     } = data;
     // const actualConvertedCodeSnippet = filteredReponse.choices[0].text
     //   .trimStart()
@@ -53,7 +51,6 @@ function ConvertCode() {
 
     // console.log(filteredReponse);
     // console.log(actualConvertedCodeSnippet);
-    console.log(currentLanguage, languageToConvert);
 
     console.log(responseFromBard);
 

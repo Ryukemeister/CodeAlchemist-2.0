@@ -67,16 +67,16 @@ export default async function handler(req, res) {
     // } into ${
     //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
     // }:\n ${actualCode}`
-    // let responseFromBard = await bot.ask(`
-    // Convert the following ${
-    //   currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
-    // } code to ${
-    //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
-    // }: \n ${
-    //   currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
-    // }\n ${actualCode}`);
+    let responseFromBard = await bot.ask(`
+    Convert the following ${
+      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
+    } code to ${
+      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
+    }: \n ${
+      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
+    }\n ${actualCode}`);
 
-    let responseFromBard = await bot.ask(`How are you bard?`);
+    // let responseFromBard = await bot.ask(`How are you bard?`);
 
     // const filteredReponse = response.data.choices[0].message;
     // const filteredReponse = response.data;
@@ -84,8 +84,6 @@ export default async function handler(req, res) {
     res.status(200).json({
       // filteredReponse,
       responseFromBard,
-      currentLanguage,
-      languageToConvert,
     });
   }
 }
