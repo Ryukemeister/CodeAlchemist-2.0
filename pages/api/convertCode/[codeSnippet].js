@@ -8,15 +8,18 @@ let barAuthCookie = process.env.BARD_AUTH_COOKIE;
 let bot = new Bard(barAuthCookie);
 
 export default async function handler(req, res) {
-  if (req.method === "GET") {
-    const { codeSnippet } = req.query;
+  const { codeSnippet } = req.query;
 
-    // Splitting incoming codeSnippet to get currentLang
-    // langToConvert and actual code
-    const splitCodeSnippet = codeSnippet.split("=+x=");
-    const currentLanguage = splitCodeSnippet[0];
-    const languageToConvert = splitCodeSnippet[1];
-    const actualCode = splitCodeSnippet[2];
+  // Splitting incoming codeSnippet to get currentLang
+  // langToConvert and actual code
+  const splitCodeSnippet = codeSnippet.split("=+x=");
+  const currentLanguage = splitCodeSnippet[0];
+  const languageToConvert = splitCodeSnippet[1];
+  const actualCode = splitCodeSnippet[2];
+
+  if (req.method === "GET") {
+    console.log(currentLanguage, languageToConvert);
+    console.log(actualCode);
 
     const configuration = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
@@ -76,12 +79,7 @@ export default async function handler(req, res) {
     // const filteredReponse = response.data;
 
     res.status(200).json({
-      // filteredReponse,
       responseFromBard,
     });
   }
 }
-
-// let age = 22;
-// let myself = "Rajiv";
-// console.log(`Hey I'm ${myself} and I'm${age}`);
