@@ -49,16 +49,16 @@ export default async function handler(req, res) {
     //   typeof languageToConvert
     // );
 
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `##### Translate this piece of code from ${currentLanguage} into ${languageToConvert}\n ### ${currentLanguage}\n    \n    ${actualCode}\n    \n###${languageToConvert}`,
-      temperature: 0,
-      max_tokens: 150,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-      stop: ["###"],
-    });
+    // const response = await openai.createCompletion({
+    //   model: "text-davinci-003",
+    //   prompt: `##### Translate this piece of code from ${currentLanguage} into ${languageToConvert}\n ### ${currentLanguage}\n    \n    ${actualCode}\n    \n###${languageToConvert}`,
+    //   temperature: 0,
+    //   max_tokens: 150,
+    //   top_p: 1.0,
+    //   frequency_penalty: 0.0,
+    //   presence_penalty: 0.0,
+    //   stop: ["###"],
+    // });
 
     // Example prompt: convert this code from python to java
     //  `Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`
@@ -77,10 +77,10 @@ export default async function handler(req, res) {
     }\n ${actualCode}`);
 
     // const filteredReponse = response.data.choices[0].message;
-    const filteredReponse = response.data;
+    // const filteredReponse = response.data;
 
     res.status(200).json({
-      filteredReponse,
+      // filteredReponse,
       responseFromBard,
       currentLanguage,
       languageToConvert,

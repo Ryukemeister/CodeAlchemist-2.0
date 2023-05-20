@@ -42,17 +42,17 @@ function ConvertCode() {
     );
     const data = await response.json();
     const {
-      filteredReponse,
+      // filteredReponse,
       responseFromBard,
       currentLanguage,
       languageToConvert,
     } = data;
-    const actualConvertedCodeSnippet = filteredReponse.choices[0].text
-      .trimStart()
-      .trimEnd();
+    // const actualConvertedCodeSnippet = filteredReponse.choices[0].text
+    //   .trimStart()
+    //   .trimEnd();
 
-    console.log(filteredReponse);
-    console.log(actualConvertedCodeSnippet);
+    // console.log(filteredReponse);
+    // console.log(actualConvertedCodeSnippet);
     console.log(
       currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1),
       languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
@@ -60,7 +60,7 @@ function ConvertCode() {
 
     console.log(responseFromBard);
 
-    setConvertedCode(actualConvertedCodeSnippet);
+    // setConvertedCode(actualConvertedCodeSnippet);
   }
 
   return (
