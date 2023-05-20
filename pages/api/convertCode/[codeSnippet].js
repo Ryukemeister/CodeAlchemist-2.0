@@ -71,7 +71,7 @@ export default async function handler(req, res) {
     //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
     // }:\n ${actualCode}`
     let responseFromBard = await bot.ask(`
-    Convert the following ${currentLanguage} code to ${languageToConvert[0]}: \n ${currentLanguage[0]}\n ${actualCode}`);
+    Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`);
 
     // let responseFromBard = await bot.ask(`How are you bard?`);
 
