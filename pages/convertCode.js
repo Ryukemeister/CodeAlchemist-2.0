@@ -53,10 +53,7 @@ function ConvertCode() {
 
     // console.log(filteredReponse);
     // console.log(actualConvertedCodeSnippet);
-    console.log(
-      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1),
-      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
-    );
+    console.log(currentLanguage, languageToConvert);
 
     console.log(responseFromBard);
 
