@@ -79,8 +79,13 @@ export default async function handler(req, res) {
     // const filteredReponse = response.data.choices[0].message;
     // const filteredReponse = response.data;
 
-    res.status(200).json({
-      responseFromBard,
-    });
+    res
+      .status(200)
+      .json({
+        splitCodeSnippet,
+        currentLanguage,
+        languageToConvert,
+        actualCode,
+      });
   }
 }
