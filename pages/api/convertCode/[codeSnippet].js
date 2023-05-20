@@ -70,12 +70,14 @@ export default async function handler(req, res) {
     // } into ${
     //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
     // }:\n ${actualCode}`
+
+    let cuuretLangToUpper =
+      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1);
+    let langToConvertToUpper =
+      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1);
+
     let responseFromBard = await bot.ask(`
-    Read, analyze and go through this code: ${actualCode} and then translate it from ${
-      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
-    } into ${
-      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
-    } and just return the code without any extra comments or explantion`);
+    Read, analyze and go through this code: ${actualCode} and then translate it from ${cuuretLangToUpper} into ${langToConvertToUpper} and just return the code without any extra comments or explantion`);
 
     // let responseFromBard = await bot.ask(`How are you bard?`);
 
