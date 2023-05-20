@@ -68,13 +68,7 @@ export default async function handler(req, res) {
     //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
     // }:\n ${actualCode}`
     let responseFromBard = await bot.ask(`
-    Convert the following ${
-      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
-    } code to ${
-      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
-    }: \n ${
-      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
-    }\n ${actualCode}`);
+    Convert the following ${currentLanguage} code to ${languageToConvert[0]}: \n ${currentLanguage[0]}\n ${actualCode}`);
 
     // let responseFromBard = await bot.ask(`How are you bard?`);
 
