@@ -2,10 +2,10 @@ import { Configuration, OpenAIApi } from "openai";
 import { Bard } from "googlebard";
 
 // Secret cookie for using the bard chatbot
-let barAuthCookie = process.env.BARD_AUTH_COOKIE;
+let bardAuthCookie = process.env.BARD_AUTH_COOKIE;
 
 // setring up bard config
-let bot = new Bard(barAuthCookie);
+let bot = new Bard(bardAuthCookie);
 
 export default async function handler(req, res) {
   const { codeSnippet } = req.query;
@@ -71,13 +71,8 @@ export default async function handler(req, res) {
     //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
     // }:\n ${actualCode}`
 
-    let cuuretLangToUpper =
-      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1);
-    let langToConvertToUpper =
-      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1);
-
     let responseFromBard = await bot.ask(`
-    Read, analyze and go through this code: ${actualCode} and then translate it from ${cuuretLangToUpper} into ${langToConvertToUpper} and just return the code without any extra comments or explantion`);
+    Convert this code from ${currentLanguage} to ${languageToConvert}: \n ${actualCode}`);
 
     // let responseFromBard = await bot.ask(`How are you bard?`);
 
