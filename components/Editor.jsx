@@ -16,15 +16,12 @@ function Editor({
   isEditable,
   availableLanguages = [],
 }) {
-  // console.log(availableLanguages, typeof availableLanguages);
-  // console.table(availableLanguages, typeof availableLanguages);
-
   // take in a prop availableLanguages to collect values of all the availabe language options
   // map through it and return an option for each element in the array
   const allOptionValues = availableLanguages.map((language) => {
     return (
       <option key={language} value={language}>
-        {language[0].toLocaleUpperCase() + language.slice(1)}
+        {language}
       </option>
     );
   });
