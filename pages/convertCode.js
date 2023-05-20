@@ -12,18 +12,18 @@ function ConvertCode() {
   const setCodeToBeConverted = useStore((store) => store.setCodeToBeConverted);
   const setConvertedCode = useStore((state) => state.setConvertedCode);
   const allAvailableLanguages = [
-    "javascript",
-    "typeScript",
-    "python",
-    "java",
-    "c",
-    "c++",
-    "sql",
-    "swift",
-    "ruby",
-    "go",
-    "flutter",
-    "dart",
+    "Javascript",
+    "TypeScript",
+    "Python",
+    "Java",
+    "C",
+    "C++",
+    "Sql",
+    "Swift",
+    "Ruby",
+    "Go",
+    "Flutter",
+    "Dart",
   ];
 
   async function onSubmitButton(e) {
@@ -36,6 +36,9 @@ function ConvertCode() {
     const langToConvert = document.getElementById(
       "language-to-be-converted"
     ).value;
+
+    console.log("Current language is: ", currentLang);
+    console.log("Language to convert is: ", langToConvert);
 
     const response = await fetch(
       `/api/convertCode/${currentLang}=+x=${langToConvert}=+x=${codeToBeConverted}`
