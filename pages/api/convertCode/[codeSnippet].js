@@ -62,13 +62,19 @@ export default async function handler(req, res) {
 
     // Example prompt: convert this code from python to java
     //  `Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`
-    let responseFromBard = await bot.ask(
-      ` Translate this function from ${
-        currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
-      } into ${
-        languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
-      }:\n ${actualCode}`
-    );
+    // ` Translate this function from ${
+    //   currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
+    // } into ${
+    //   languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
+    // }:\n ${actualCode}`
+    let responseFromBard = await bot.ask(`
+    Convert the following ${
+      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
+    } code to ${
+      languageToConvert[0].toLocaleUpperCase() + languageToConvert.slice(1)
+    }: \n ${
+      currentLanguage[0].toLocaleUpperCase() + currentLanguage.slice(1)
+    }\n ${actualCode}`);
 
     // const filteredReponse = response.data.choices[0].message;
     const filteredReponse = response.data;
