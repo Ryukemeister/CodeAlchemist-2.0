@@ -52,6 +52,14 @@ function ConvertCode() {
 
     // console.log(filteredReponse);
     // console.log(actualConvertedCodeSnippet);
+    const res = await fetch(
+      `/api/returnValues/(${currentLang})+(${langToConvert})+(${actualCode})`
+    );
+
+    const resData = res.json();
+
+    console.log(resData);
+
     console.log("1: ", splitCodeSnippet);
     console.log("2: ", currentLanguage);
     console.log("3: ", languageToConvert);
