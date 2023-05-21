@@ -13,9 +13,9 @@ export default async function handler(req, res) {
   // Splitting incoming codeSnippet to get currentLang
   // langToConvert and actual code
   const splitCodeSnippet = codeSnippet.split("~");
-  const currentLanguage = splitCodeSnippet[0];
-  const languageToConvert = splitCodeSnippet[1];
-  const actualCode = splitCodeSnippet[2];
+  const currentLanguage = splitCodeSnippet[0].slice(1, -1);
+  const languageToConvert = splitCodeSnippet[1].slice(1, -1);
+  const actualCode = splitCodeSnippet[2].slice(1, -1);
 
   if (req.method === "GET") {
     // console.log(currentLanguage, languageToConvert);

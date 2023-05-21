@@ -41,7 +41,7 @@ function ConvertCode() {
     console.log("Language to convert is: ", langToConvert);
 
     const response = await fetch(
-      `/api/convertCode/(${currentLang})~(${langToConvert})~${codeToBeConverted}`
+      `/api/convertCode/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
     );
     const data = await response.json();
     const { splitCodeSnippet, currentLanguage, languageToConvert, actualCode } =
