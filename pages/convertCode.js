@@ -56,7 +56,7 @@ function ConvertCode() {
       `/api/returnValues/(${currentLang})+(${langToConvert})+(${actualCode})`
     );
 
-    const resData = res.json();
+    const resData = await res.json();
 
     console.log(resData);
 
