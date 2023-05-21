@@ -53,7 +53,7 @@ function ConvertCode() {
     // console.log(filteredReponse);
     // console.log(actualConvertedCodeSnippet);
     const res = await fetch(
-      `/api/returnValues/(${currentLang})+(${langToConvert})+(${actualCode})`
+      `/api/returnValues/(${currentLang})+(${langToConvert})+(${codeToBeConverted})`
     );
 
     const resData = await res.json();
