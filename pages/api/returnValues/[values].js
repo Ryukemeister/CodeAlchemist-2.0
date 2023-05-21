@@ -4,10 +4,16 @@ export default function handler(req, res) {
   if (req.method === "GET") {
     const { values } = req.query;
     const splitCode = values.split(" ");
-    const x = splitCode[0];
-    const y = splitCode[1];
-    const z = splitCode[2];
+    const currentLanguage = splitCode[0].slice(1, -1);
+    const languageToConvert = splitCode[1].slice(1, -1);
+    const actualCode = splitCode[2].slice(1, -1);
 
-    res.status(200).json({ values, splitCode });
+    res.status(200).json({
+      values,
+      splitCode,
+      currentLangg,
+      langToConvertt,
+      actualCodeToConvert,
+    });
   }
 }

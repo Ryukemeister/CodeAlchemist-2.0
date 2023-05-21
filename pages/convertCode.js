@@ -57,11 +57,22 @@ function ConvertCode() {
     );
 
     const resData = await res.json();
-    const { values, splitCode } = resData;
+    const {
+      values,
+      splitCode,
+      currentLangg,
+      langToConvertt,
+      actualCodeToConvert,
+    } = resData;
 
+    console.log("----------");
     console.log("This is the actual response data: ", resData);
     console.log("These are the values", values);
-    console.log("THis is the split code", splitCode);
+    console.log("This is the split code", splitCode);
+    console.log("Current language: ", currentLangg);
+    console.log("Language to convert", langToConvertt);
+    console.log("Given code: ", actualCodeToConvert);
+    console.log("----------");
 
     console.log("1: ", splitCodeSnippet);
     console.log("2: ", currentLanguage);
