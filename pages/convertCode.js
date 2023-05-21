@@ -2,6 +2,7 @@ import { useStore } from "@/store";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Editor from "@/components/Editor";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "800"] });
@@ -26,7 +27,6 @@ function ConvertCode() {
 
   async function onSubmitButton(e) {
     e.preventDefault();
-    setConvertedCode("");
 
     // Obtaining values of the current language options and
     // the language to be converted
@@ -34,7 +34,34 @@ function ConvertCode() {
     const langToConvert = document.getElementById(
       "language-to-be-converted"
     ).value;
+    const errMessage = `// Oops, something's wrong :(
 
+    const error = {
+      causes:[
+        "Either you haven't provided any input to the Editor.",
+        "Or the language that you're trying to convert your code into and the language that you're current providing to the Editor are both one and the same",
+        "Or maybe you aren't connected to the internet."
+      ], 
+      possibleSolutions:[
+        "Try providing a better prompt to the Editor.",
+        "Or check if the language that you write your code and the language you want to convert your code into are not the same.",
+        "Or try refreshing your browser."
+      ],
+    }; `;
+
+    // Error handling
+    // Try to check if the user provides a blank input to the Editor
+    // Or the language to convert and current language are the same
+    if (
+      codeToBeConverted.length <= 0 ||
+      currentLang == langToConvert ||
+      codeToBeConverted == errMessage
+    ) {
+      setConvertedCode(errMessage);
+      return;
+    }
+
+    setConvertedCode("Loading...");
     const response = await fetch(
       `/api/convertCode/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
     );
