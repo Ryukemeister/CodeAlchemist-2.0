@@ -52,16 +52,16 @@ export default async function handler(req, res) {
     //   typeof languageToConvert
     // );
 
-    const responseFromOpenAI = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `##### Translate this piece of code from ${currentLanguage} into ${languageToConvert}\n ### ${currentLanguage}\n    \n    ${actualCode}\n    \n###${languageToConvert}`,
-      temperature: 0,
-      max_tokens: 150,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-      stop: ["###"],
-    });
+    // const responseFromOpenAI = await openai.createCompletion({
+    //   model: "text-davinci-003",
+    //   prompt: `##### Translate this piece of code from ${currentLanguage} into ${languageToConvert}\n ### ${currentLanguage}\n    \n    ${actualCode}\n    \n###${languageToConvert}`,
+    //   temperature: 0,
+    //   max_tokens: 150,
+    //   top_p: 1.0,
+    //   frequency_penalty: 0.0,
+    //   presence_penalty: 0.0,
+    //   stop: ["###"],
+    // });
 
     // Example prompt: convert this code from python to java
     //  `Read, analyze and go through this code: ${actualCode} and then translate it from ${currentLanguage} into ${languageToConvert} and just return the code without any extra comments or explantion`
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
       currentLanguage,
       languageToConvert,
       actualCode,
-      responseFromOpenAI,
+      responseFromBard,
     });
   }
 }
