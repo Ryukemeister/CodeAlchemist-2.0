@@ -30,19 +30,19 @@ export default async function handler(req, res) {
 
     // Calling the api and assigning the system the desired role
     // in order to get a response that can be as close to our expectation
-    // const response = await openai.createChatCompletion({
-    //   model: "gpt-3.5-turbo",
-    //   messages: [
-    //     {
-    //       role: "system",
-    //       content: "You are a helpful assistant",
-    //     },
-    //     {
-    //       role: "user",
-    //       content: `Translate the following piece of code from ${currentLanguage} to ${languageToConvert} without suggesting any notes: "${actualCode}"`,
-    //     },
-    //   ],
-    // });
+    const responseFromOpenAI = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant",
+        },
+        {
+          role: "user",
+          content: `Translate the following piece of code from ${currentLanguage} to ${languageToConvert} without suggesting any notes: "${actualCode}"`,
+        },
+      ],
+    });
 
     // console.log(actualCode, typeof actualCode);
     // console.log(
@@ -84,6 +84,7 @@ export default async function handler(req, res) {
       currentLanguage,
       languageToConvert,
       actualCode,
+      responseFromOpenAI,
     });
   }
 }
