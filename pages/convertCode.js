@@ -50,7 +50,7 @@ function ConvertCode() {
 
     if (
       splitResponeFromBard[1].startsWith(
-        langToConvert[0].toLocaleLowerCase() + languageToConvert.slice(1)
+        langToConvert[0].toLocaleLowerCase() + langToConvert.slice(1)
       )
     ) {
       const splitCodeToDisplay = splitResponeFromBard[1].split("\n");
