@@ -36,18 +36,18 @@ function ConvertCode() {
     ).value;
     const errMessage = `// Oops, something's wrong :(
 
-    const error = {
-      causes:[
-        "Either you haven't provided any input to the Editor.",
-        "Or the language that you're trying to convert your code into and the language that you're current providing to the Editor are both one and the same",
-        "Or maybe you aren't connected to the internet."
-      ], 
-      possibleSolutions:[
-        "Try providing a better prompt to the Editor.",
-        "Or check if the language that you write your code and the language you want to convert your code into are not the same.",
-        "Or try refreshing your browser."
-      ],
-    }; `;
+const error = {
+  causes:[
+    "Either you haven't provided any input to the Editor",
+    "Or the language that you're trying to convert your code into and the language that you're currently opting for in the Editor are both one and the same",
+    "Or maybe you aren't connected to the internet"
+  ], 
+  possibleSolutions:[
+    "Try providing a better prompt to the Editor",
+    "Or check if the language that you write your code and the language you want to convert your code into are not the same",
+    "Or try refreshing your browser"
+  ],
+}; `;
 
     // Error handling
     // Try to check if the user provides a blank input to the Editor
