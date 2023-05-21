@@ -17,12 +17,10 @@ function ConvertCode() {
     "Python",
     "Java",
     "C",
-    "C++",
     "Sql",
     "Swift",
     "Ruby",
     "Go",
-    "Flutter",
     "Dart",
   ];
 
@@ -37,51 +35,30 @@ function ConvertCode() {
       "language-to-be-converted"
     ).value;
 
-    console.log("Current language is: ", currentLang);
-    console.log("Language to convert is: ", langToConvert);
-
     const response = await fetch(
       `/api/convertCode/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
     );
     const data = await response.json();
-    const {
-      splitCodeSnippet,
-      currentLanguage,
-      languageToConvert,
-      actualCode,
-      responseFromBard,
-    } = data;
-    // const actualConvertedCodeSnippet = filteredReponse.choices[0].text
-    //   .trimStart()
-    //   .trimEnd();
 
-    // console.log(filteredReponse);
-    // console.log(actualConvertedCodeSnippet);
-    // const res = await fetch(
-    //   `/api/returnValues/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
-    // );
+    const { responseFromBard } = data;
 
-    // const resData = await res.json();
-    // const { values, splitCode, currentLangg, langToConvertt } = resData;
+    // Since we know the bard response goes something like
+    // "Sure, here is the translation
+    // ``` code ``` always comes after the above sentence
+    // split text using ```
+    const splitResponeFromBard = responseFromBard.split("```");
 
-    // console.log("----------");
-    // console.log("This is the actual response data: ", resData);
-    // console.log("These are the values", values);
-    // console.log("This is the split code", splitCode);
-    // console.log("Current language: ", currentLangg);
-    // console.log("Language to convert", langToConvertt);
-    // console.log("Given code: ", actualCodeToConvert);
-    // console.log("----------");
-
-    console.log("1: ", splitCodeSnippet);
-    console.log("2: ", currentLanguage);
-    console.log("3: ", languageToConvert);
-    console.log("4: ", actualCode);
-    console.log(responseFromBard);
-
-    // console.log(responseFromBard);
-
-    // setConvertedCode(actualConvertedCodeSnippet);
+    if (
+      splitResponeFromBard[1].startsWith(
+        langToConvert[0].toLocaleLowerCase() + languageToConvert.slice(1)
+      )
+    ) {
+      const splitCodeToDisplay = splitResponeFromBard[1].split("\n");
+      splitCodeToDisplay.shift();
+      setConvertedCode(splitCodeToDisplay.join("\n"));
+    } else {
+      setConvertedCode(splitResponeFromBard[1].trimStart().trimEnd());
+    }
   }
 
   return (
