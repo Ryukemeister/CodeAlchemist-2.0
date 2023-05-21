@@ -6,7 +6,7 @@ export default function handler(req, res) {
     const splitCode = values.split(" ");
     const currentLangg = splitCode[0].slice(1, -1);
     const langToConvertt = splitCode[1].slice(1, -1);
-    const actualCodeToConvert = splitCode[2].slice(1, -1);
+    const actualCodeToConvert = splitCode[2];
 
     res.status(200).json({
       values,
