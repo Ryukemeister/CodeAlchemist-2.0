@@ -8,6 +8,6 @@ export default function handler(req, res) {
     const y = splitCode[1];
     const z = splitCode[2];
 
-    res.status(200).json({ splitCode, x, y, z, values });
+    res.status(200).json({ values });
   }
 }
