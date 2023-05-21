@@ -57,10 +57,11 @@ function ConvertCode() {
     );
 
     const resData = await res.json();
-    const { values } = resData;
+    const { values, splitCode } = resData;
 
     console.log("This is the actual response data: ", resData);
     console.log("These are the values", values);
+    console.log("THis is the split code", splitCode);
 
     console.log("1: ", splitCodeSnippet);
     console.log("2: ", currentLanguage);
