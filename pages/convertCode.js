@@ -44,8 +44,13 @@ function ConvertCode() {
       `/api/convertCode/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
     );
     const data = await response.json();
-    const { splitCodeSnippet, currentLanguage, languageToConvert, actualCode } =
-      data;
+    const {
+      splitCodeSnippet,
+      currentLanguage,
+      languageToConvert,
+      actualCode,
+      responseFromOpenAI,
+    } = data;
     // const actualConvertedCodeSnippet = filteredReponse.choices[0].text
     //   .trimStart()
     //   .trimEnd();
@@ -78,6 +83,7 @@ function ConvertCode() {
     console.log("2: ", currentLanguage);
     console.log("3: ", languageToConvert);
     console.log("4: ", actualCode);
+    console.log(responseFromOpenAI);
 
     // console.log(responseFromBard);
 
