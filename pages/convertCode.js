@@ -59,10 +59,10 @@ function ConvertCode() {
     const resData = await res.json();
     const {
       values,
-      // splitCode,
-      // currentLangg,
-      // langToConvertt,
-      // actualCodeToConvert,
+      splitCode,
+      currentLangg,
+      langToConvertt,
+      actualCodeToConvert,
     } = resData;
 
     console.log("----------");
