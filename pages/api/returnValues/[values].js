@@ -10,10 +10,10 @@ export default function handler(req, res) {
 
     res.status(200).json({
       values,
-      splitCode,
-      currentLangg,
-      langToConvertt,
-      actualCodeToConvert,
+      // splitCode,
+      // currentLangg,
+      // langToConvertt,
+      // actualCodeToConvert,
     });
   }
 }
