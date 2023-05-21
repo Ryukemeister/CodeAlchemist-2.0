@@ -57,21 +57,21 @@ function ConvertCode() {
 
     // console.log(filteredReponse);
     // console.log(actualConvertedCodeSnippet);
-    const res = await fetch(
-      `/api/returnValues/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
-    );
+    // const res = await fetch(
+    //   `/api/returnValues/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
+    // );
 
-    const resData = await res.json();
-    const { values, splitCode, currentLangg, langToConvertt } = resData;
+    // const resData = await res.json();
+    // const { values, splitCode, currentLangg, langToConvertt } = resData;
 
-    console.log("----------");
-    console.log("This is the actual response data: ", resData);
-    console.log("These are the values", values);
-    console.log("This is the split code", splitCode);
-    console.log("Current language: ", currentLangg);
-    console.log("Language to convert", langToConvertt);
-    console.log("Given code: ", actualCodeToConvert);
-    console.log("----------");
+    // console.log("----------");
+    // console.log("This is the actual response data: ", resData);
+    // console.log("These are the values", values);
+    // console.log("This is the split code", splitCode);
+    // console.log("Current language: ", currentLangg);
+    // console.log("Language to convert", langToConvertt);
+    // console.log("Given code: ", actualCodeToConvert);
+    // console.log("----------");
 
     console.log("1: ", splitCodeSnippet);
     console.log("2: ", currentLanguage);
