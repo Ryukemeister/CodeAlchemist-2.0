@@ -12,14 +12,14 @@ export default async function handler(req, res) {
 
   // Splitting incoming codeSnippet to get currentLang
   // langToConvert and actual code
-  const splitCodeSnippet = codeSnippet.split("=+x=");
+  const splitCodeSnippet = codeSnippet.split("~");
   const currentLanguage = splitCodeSnippet[0];
   const languageToConvert = splitCodeSnippet[1];
   const actualCode = splitCodeSnippet[2];
 
   if (req.method === "GET") {
-    console.log(currentLanguage, languageToConvert);
-    console.log(actualCode);
+    // console.log(currentLanguage, languageToConvert);
+    // console.log(actualCode);
 
     const configuration = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
@@ -79,13 +79,11 @@ export default async function handler(req, res) {
     // const filteredReponse = response.data.choices[0].message;
     // const filteredReponse = response.data;
 
-    res
-      .status(200)
-      .json({
-        splitCodeSnippet,
-        currentLanguage,
-        languageToConvert,
-        actualCode,
-      });
+    res.status(200).json({
+      splitCodeSnippet,
+      currentLanguage,
+      languageToConvert,
+      actualCode,
+    });
   }
 }
