@@ -8,8 +8,6 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function handler(req, res) {
-  // let x, y, z, codeSplit;
-
   if (req.method === "GET") {
     const { values } = req.query;
 
@@ -19,46 +17,17 @@ export default async function handler(req, res) {
     const langToConvertt = splitCode[1].slice(1, -1);
     const actualCodeToConvert = splitCode[2].slice(1, -1);
 
-    const resssss = await openai.createCompletion({
+    const response = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: `Convert the given piece of code from ${currentLangg} into ${langToConvertt}: ${actualCodeToConvert}`,
       temperature: 0,
       max_tokens: 150,
     });
 
-    const openAiResponse = resssss.data;
-    // console.log(resssss.data);
+    const openAiResponse = response.data;
 
     res.status(200).json({
-      currentLangg,
-      langToConvertt,
-      actualCodeToConvert,
       openAiResponse,
     });
-
-    // const splitCode = values.split("~");
-    // const currentLangg = splitCode[0].slice(1, -1);
-    // const langToConvertt = splitCode[1].slice(1, -1);
-    // const actualCodeToConvert = splitCode[2].slice(1, -1);
-
-    // console.log("oiiiiiii: ", splitCode);
-
-    // const resssss = await openai.createCompletion({
-    //   model: "text-davinci-003",
-    //   prompt: `Convert the given piece of code from ${currentLangg} into ${langToConvertt}: ${actualCodeToConvert}`,
-    //   temperature: 0,
-    //   max_tokens: 150,
-    // });
-
-    // const filteredResponseValues = resssss.data;
-
-    // res.status(200).json({
-    //   values,
-    //   splitCode,
-    //   currentLangg,
-    //   langToConvertt,
-    //   actualCodeToConvert,
-    //   filteredResponseValues,
-    // });
   }
 }
