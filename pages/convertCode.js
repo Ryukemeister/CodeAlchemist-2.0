@@ -106,17 +106,8 @@ const error = {
       `/api/returnValues/(${currentLang})~(${langToConvert})~(${codeToBeConverted})`
     );
     const data = await response.json();
-    const {
-      currentLangg,
-      langToConvertt,
-      actualCodeToConvert,
-      openAiResponse,
-    } = data;
+    const { openAiResponse } = data;
 
-    console.log(data);
-    console.log(currentLangg, langToConvertt);
-    console.log(actualCodeToConvert);
-    console.log(openAiResponse.choices[0].text.trimStart().trimEnd());
     setConvertedCode(openAiResponse.choices[0].text.trimStart().trimEnd());
   }
 
