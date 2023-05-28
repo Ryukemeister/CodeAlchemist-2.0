@@ -11,6 +11,6 @@ New features:
 
 Upcoming features:
 
-- Include option to convert language into code
+- Include option to convert natural language into code
 
 ## [Check it out !](https://codealchemist.vercel.app/)
