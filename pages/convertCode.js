@@ -17,6 +17,7 @@ function ConvertCode() {
     "Java",
     "C++",
     "C",
+    "Regex",
     "Sql",
     "Swift",
     "Ruby",
