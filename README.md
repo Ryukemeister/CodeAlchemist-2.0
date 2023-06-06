@@ -7,7 +7,7 @@ CodeAlchemist 2.0 is a revamp of the original [CodeAlchemist](https://github.com
 New features:
 
 - Extend language options
-- Option to convert regex code (in progress)
+- Option to convert regex code
 
 Upcoming features:
 
