@@ -100,7 +100,7 @@ function ExplainCode() {
           <div>
             <button
               onClick={() => handleClick(codeToBeExplained)}
-              className="bg-yellow-500 outline-none mt-4 mb-4 px-3 py-1 text-xl font-poppins font-semibold tracking-wide text-white rounded-md"
+              className={`${poppins.className} bg-yellow-500 outline-none mt-4 mb-4 px-3 py-1 text-xl font-poppins font-semibold tracking-wide text-white rounded-md`}
             >
               Explain code
             </button>
