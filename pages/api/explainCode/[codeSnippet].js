@@ -10,7 +10,6 @@ const openai = new OpenAIApi(configuration);
 export default async function handler(req, res) {
   const { codeSnippet } = req.query;
 
-  console.log(codeSnippet);
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: `Explain what the following code snippet does: ${codeSnippet}`,
